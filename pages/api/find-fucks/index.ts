@@ -94,7 +94,7 @@ export default async function uploadHandler(
         );
 
         // Replace the segments
-        results.forEach((result) => {
+        results.forEach((result: { start: number; end: number; }) => {
           let startByte = Math.floor(
             result.start * 44100 * 2 + 44
           );
