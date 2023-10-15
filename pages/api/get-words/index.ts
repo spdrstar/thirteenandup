@@ -70,7 +70,7 @@ export default async function uploadHandler(
               );
 
               // Send the response from WebPurify back to the client
-              res.status(200).json(response.data);
+              // res.status(200).json(response.data);
               const allBadWords =
                 response.data["rsp"]["expletive"];
               const badWords = allBadWords.filter(
