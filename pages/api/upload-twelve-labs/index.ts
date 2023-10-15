@@ -100,13 +100,15 @@ export default async function uploadHandler(
                 1000
               );
             }
-          );
-          const VIDEO_ID = uploadResp.video_id;
-          console.log(`VIDEO_ID: ${VIDEO_ID}`);
-          console.log(
-            `Status code: ${uploadResp.status}`
-          );
-          console.log(uploadResp);
+          ) as any;
+          if(uploadResp?.video_id) {
+            const VIDEO_ID = uploadResp?.video_id;
+            console.log(`VIDEO_ID: ${VIDEO_ID}`);
+            console.log(
+              `Status code: ${uploadResp?.status}`
+            );
+            console.log(uploadResp);
+          }
         })();
 
         //   res.json({
