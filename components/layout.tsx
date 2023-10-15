@@ -80,6 +80,7 @@ export default function Layout({
 
         main {
           padding: 1rem 0 5rem 0;
+          max-width: 80%;
           flex: 1;
           display: flex;
           flex-direction: column;
