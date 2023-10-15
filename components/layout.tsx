@@ -59,7 +59,7 @@ export default function Layout({
       </Head>
 
       <main>
-        <Image src="/logo.png" alt="Logo" width={400} height={400} />
+        <Image src="/logo.png" alt="Logo" width={400} height={400} style={{maxWidth: "80%", objectFit: "contain"}} />
         <h1 className="title">{title}{titleSuffix}</h1>
         <p className="description">{description}</p>
         <div className="grid">{children}</div>
