@@ -1,11 +1,13 @@
-import Layout from './layout'
-import { MUX_HOME_PAGE_URL } from '../constants'
+import Layout from "./layout";
+import { MUX_HOME_PAGE_URL } from "../constants";
 
 interface UploadPageProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export default function UploadPage({ children }: UploadPageProps) {
+export default function UploadPage({
+  children,
+}: UploadPageProps) {
   return (
     <Layout
       title="your content"
@@ -28,5 +30,5 @@ export default function UploadPage({ children }: UploadPageProps) {
         }
       `}</style>
     </Layout>
-  )
+  );
 }
