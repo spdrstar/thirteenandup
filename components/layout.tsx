@@ -1,99 +1,132 @@
-import Head from 'next/head'
-import { MUX_HOME_PAGE_URL } from '../constants'
+import Head from "next/head";
+import Image from "next/image";
+import { MUX_HOME_PAGE_URL } from "../constants";
+import React, {
+  useState,
+  useEffect,
+} from "react";
 
 interface LayoutProps {
-  title?: string
-  description?: string
-  metaTitle?: string
-  metaDescription?: string
-  image?: string
-  children: React.ReactNode
-  loadTwitterWidget?: boolean
+  title?: string;
+  description?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  image?: string;
+  children: React.ReactNode;
+  loadTwitterWidget?: boolean;
 }
 
 export default function Layout({
   title,
   description,
-  metaTitle = 'Mux + Next.js',
+  metaTitle = "Thirteen and Up",
   metaDescription,
-  image = 'https://with-mux-video.vercel.app/mux-nextjs-og-image.png',
+  image = "https://with-mux-video.vercel.app/mux-nextjs-og-image.png",
   children,
-  loadTwitterWidget,
 }: LayoutProps) {
+  const [titleSuffix, setTitleSuffix] =
+    useState("");
+
+  useEffect(() => {
+    const suffixes = [
+      " with no f*cks",
+      " with less sh*t",
+      ", a**less",
+      " unb*stardized",
+    ];
+
+    let currentSuffixIndex = 0;
+
+    const interval = setInterval(() => {
+      setTitleSuffix(
+        suffixes[currentSuffixIndex]
+      );
+      currentSuffixIndex =
+        (currentSuffixIndex + 1) %
+        suffixes.length;
+    }, 2000); // Change every 2 seconds
+
+    // Cleanup the interval when the component is unmounted
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="container">
       <Head>
-        <title>Mux + Next.js</title>
+        <title>Thirteen and Up</title>
         <link rel="icon" href="/favicon.ico" />
-        {metaTitle && <meta property="og:title" content={metaTitle} />}
-        {metaTitle && <meta property="twitter:title" content={metaTitle} />}
-        {metaDescription && (
-          <meta property="og:description" content={description} />
+        {metaTitle && (
+          <meta
+            property="og:title"
+            content={metaTitle}
+          />
+        )}
+        {metaTitle && (
+          <meta
+            property="twitter:title"
+            content={metaTitle}
+          />
         )}
         {metaDescription && (
-          <meta property="twitter:description" content={description} />
+          <meta
+            property="og:description"
+            content={description}
+          />
         )}
-        {image && <meta property="og:image" content={image} />}
+        {metaDescription && (
+          <meta
+            property="twitter:description"
+            content={description}
+          />
+        )}
         {image && (
-          <meta property="twitter:card" content="summary_large_image" />
-        )}
-        {image && <meta property="twitter:image" content={image} />}
-        {loadTwitterWidget && (
-          <script
-            type="text/javascript"
-            async
-            src="https://platform.twitter.com/widgets.js"
-          ></script>
+          <meta
+            property="og:image"
+            content={image}
+          />
         )}
       </Head>
 
       <main>
-        <h1 className="title">{title}</h1>
-        <p className="description">{description}</p>
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          width={400}
+          height={400}
+          style={{
+            maxWidth: "80%",
+            objectFit: "contain",
+          }}
+        />
+        <h1 className="title">
+          {title}
+          {titleSuffix}
+        </h1>
+        <p className="description">
+          {description}
+        </p>
         <div className="grid">{children}</div>
       </main>
-
-      <footer>
-        <a href={MUX_HOME_PAGE_URL} target="_blank" rel="noopener noreferrer">
-        </a>
-      </footer>
 
       <style jsx>{`
         .container {
           min-height: 100vh;
           min-height: -webkit-fill-available;
-          padding: 0 0.5rem;
+          padding: 0 0rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          background: #fbf4e4;
+          height: 100vh;
         }
 
         main {
           padding: 1rem 0 5rem 0;
+          max-width: 80%;
           flex: 1;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-          width: 71px;
-        }
-
-        footer a {
-          display: flex;
           justify-content: center;
           align-items: center;
         }
@@ -135,8 +168,11 @@ export default function Layout({
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+          font-family: Menlo, Monaco,
+            Lucida Console, Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono, Courier New,
+            monospace;
         }
 
         .grid {
@@ -172,9 +208,10 @@ export default function Layout({
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
+          font-family: -apple-system,
+            BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans,
+            Droid Sans, Helvetica Neue, sans-serif;
         }
 
         a {
@@ -190,5 +227,5 @@ export default function Layout({
         }
       `}</style>
     </div>
-  )
+  );
 }

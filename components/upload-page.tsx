@@ -1,15 +1,17 @@
-import Layout from './layout'
-import { MUX_HOME_PAGE_URL } from '../constants'
+import Layout from "./layout";
+import { MUX_HOME_PAGE_URL } from "../constants";
 
 interface UploadPageProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export default function UploadPage({ children }: UploadPageProps) {
+export default function UploadPage({
+  children,
+}: UploadPageProps) {
   return (
     <Layout
-      title="Make videos safe for kids with one click"
-      description="Upload any video to remove swear words and other inappropriate content"
+      title="your content"
+      description="video censorship with one click"
     >
       <div className="wrapper">
         <div className="children">{children}</div>
@@ -17,7 +19,7 @@ export default function UploadPage({ children }: UploadPageProps) {
       <style jsx>{`
         .about-mux {
           padding: 0 1rem 1.5rem 1rem;
-          max-width: 600px;
+          width: 100%;
         }
         .about-mux {
           line-height: 1.4rem;
@@ -28,5 +30,5 @@ export default function UploadPage({ children }: UploadPageProps) {
         }
       `}</style>
     </Layout>
-  )
+  );
 }

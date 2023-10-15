@@ -8,14 +8,11 @@ export default function Button({ children, ...otherProps }: ButtonProps) {
       <button {...otherProps}>{children}</button>
       <style jsx>{`
         button {
-          padding: 16px 16px;
-          border-radius: 4px;
+          padding: 20px 20px;
+          border-radius: 50px;
+          width: 300px;
           font-size: 22px;
-          background-image: linear-gradient(
-            to right,
-            rgb(255, 61, 48),
-            rgb(255, 43, 97)
-          );
+          background: #E4C085;
           color: white;
           line-height: 22px;
           border: none;
