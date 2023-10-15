@@ -138,7 +138,7 @@ export default function Layout({
           margin: 0;
           line-height: 1.15;
           font-size: 4rem;
-          font-family: departura;
+          font-family: 'Departura', sans-serif;
         }
 
         .title,
@@ -149,7 +149,7 @@ export default function Layout({
         .description {
           line-height: 1.5;
           font-size: 1.5rem;
-          font-family: departura;
+          font-family: 'Departura', sans-serif;
         }
 
         code {

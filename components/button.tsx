@@ -17,7 +17,7 @@ export default function Button({ children, ...otherProps }: ButtonProps) {
           line-height: 22px;
           border: none;
           cursor: pointer;
-          font-family: departura;
+          font-family: 'Departura', sans-serif;
         }
         button:hover {
           background: #E4C085;

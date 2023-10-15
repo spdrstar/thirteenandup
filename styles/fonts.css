@@ -1,0 +1,8 @@
+/* styles/fonts.css */
+@font-face {
+    font-family: 'Departura'; /* Name you'll use to refer to the font in styles */
+    src: url('/fonts/Departura.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* This ensures text remains visible during font loading */
+}
