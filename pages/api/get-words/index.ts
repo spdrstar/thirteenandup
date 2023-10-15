@@ -39,7 +39,7 @@ export default async function uploadHandler(
           })
           .then((re) => {
             const transcriptWithTimeStamps =
-              re.data;
+              re.data.data;
             let wholeTranscript = [];
             for (
               let i = 0;
@@ -52,8 +52,7 @@ export default async function uploadHandler(
             }
             // TODO send to api to get list of swear words
             console.log(
-              "here is the whole transcript: ",
-              wholeTranscript
+              wholeTranscript.join(" ")
             );
           });
 
