@@ -37,8 +37,7 @@ export default async function uploadHandler(
                 "tlk_1PHHQRG3HT2GWS2X0RXT81WYAZKM",
             },
           })
-          .then((re) => {
-            console.log(re.data);
+          .then(async (re) => {
             const transcriptWithTimeStamps =
               re.data.data;
             let wholeTranscript = [];
@@ -52,13 +51,54 @@ export default async function uploadHandler(
               );
             }
             // TODO send to api to get list of swear words
-            console.log(
-              wholeTranscript.join(" ")
-            );
+            try {
+              const response = await axios.get(
+                "http://api1.webpurify.com/services/rest/",
+                {
+                  params: {
+                    api_key:
+                      "3ad8d4adb11dfc8ce14e307cb01cd7a8",
+                    method:
+                      "webpurify.live.return",
+                    text: wholeTranscript.join(
+                      " "
+                    ),
+                    replacesymbol: "*",
+                    format: "json",
+                  },
+                }
+              );
+
+              // Send the response from WebPurify back to the client
+              res.status(200).json(response.data);
+              const allBadWords =
+                response.data["rsp"]["expletive"];
+              const badWords = allBadWords.filter(
+                (
+                  value: any,
+                  index: any,
+                  self: string | any[]
+                ) => {
+                  return (
+                    self.indexOf(value) === index
+                  );
+                }
+              );
+              console.log(badWords);
+              return res
+                .status(200)
+                .json(badWords);
+            } catch (error: any) {
+              res
+                .status(
+                  error.response?.status || 500
+                )
+                .json(error.response?.data || {});
+            }
           });
 
         // console.log(JSON.stringify(resp));
-        return res.status(200).json(resp);
+        //return res.status(200).json(resp);
       } catch (e) {
         console.error("Request error", e);
         return res.status(500).json({
