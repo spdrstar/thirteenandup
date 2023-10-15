@@ -55,7 +55,6 @@ export default function Layout({
 
       <footer>
         <a href={MUX_HOME_PAGE_URL} target="_blank" rel="noopener noreferrer">
-          Powered by <img src="/mux.svg" alt="Mux Logo" className="logo" />
         </a>
       </footer>
 
