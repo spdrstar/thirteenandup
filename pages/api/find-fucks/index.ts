@@ -94,35 +94,40 @@ export default async function uploadHandler(
         );
 
         // Replace the segments
-        results.forEach((result: { start: number; end: number; }) => {
-          let startByte = Math.floor(
-            result.start * 44100 * 2 + 44
-          );
-          let endByte = Math.floor(
-            result.end * 44100 * 2 + 44
-          );
-
-          console.log(
-            `Replacing from byte ${startByte} to byte ${endByte}`
-          );
-
-          for (
-            let i = startByte;
-            i < endByte;
-            i += functionWavBuffer.length
-          ) {
-            let segmentLength = Math.min(
-              functionWavBuffer.length,
-              endByte - i
+        results.forEach(
+          (result: {
+            start: number;
+            end: number;
+          }) => {
+            let startByte = Math.floor(
+              result.start * 44100 * 2 + 44
             );
-            functionWavBuffer.copy(
-              originalBuffer,
-              i,
-              0,
-              segmentLength
+            let endByte = Math.floor(
+              result.end * 44100 * 2 + 44
             );
+
+            console.log(
+              `Replacing from byte ${startByte} to byte ${endByte}`
+            );
+
+            for (
+              let i = startByte;
+              i < endByte;
+              i += functionWavBuffer.length
+            ) {
+              let segmentLength = Math.min(
+                functionWavBuffer.length,
+                endByte - i
+              );
+              functionWavBuffer.copy(
+                originalBuffer,
+                i,
+                0,
+                segmentLength
+              );
+            }
           }
-        });
+        );
 
         console.log("Segments replaced");
 
