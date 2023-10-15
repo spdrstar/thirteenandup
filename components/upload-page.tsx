@@ -8,7 +8,7 @@ interface UploadPageProps {
 export default function UploadPage({ children }: UploadPageProps) {
   return (
     <Layout
-      title="unf*ck the internet with us"
+      title="Your content"
       description="video censorship with one click"
     >
       <div className="wrapper">

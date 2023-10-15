@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image';
 import { MUX_HOME_PAGE_URL } from '../constants'
+import React, { useState, useEffect } from 'react';
 
 interface LayoutProps {
   title?: string
@@ -20,6 +21,27 @@ export default function Layout({
   image = 'https://with-mux-video.vercel.app/mux-nextjs-og-image.png',
   children,
 }: LayoutProps) {
+  const [titleSuffix, setTitleSuffix] = useState('');
+
+  useEffect(() => {
+    const suffixes = [
+      " with no f*cks",
+      " with less sh*t",
+      ", a**less",
+      " unb*stardized"
+    ];
+    
+    let currentSuffixIndex = 0;
+    
+    const interval = setInterval(() => {
+      setTitleSuffix(suffixes[currentSuffixIndex]);
+      currentSuffixIndex = (currentSuffixIndex + 1) % suffixes.length;
+    }, 2000); // Change every 2 seconds
+  
+    // Cleanup the interval when the component is unmounted
+    return () => clearInterval(interval);
+  }, []);  
+
   return (
     <div className="container">
       <Head>
@@ -38,7 +60,7 @@ export default function Layout({
 
       <main>
         <Image src="/logo.png" alt="Logo" width={400} height={400} />
-        <h1 className="title">{title}</h1>
+        <h1 className="title">{title}{titleSuffix}</h1>
         <p className="description">{description}</p>
         <div className="grid">{children}</div>
       </main>
