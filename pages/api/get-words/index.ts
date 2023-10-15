@@ -38,6 +38,7 @@ export default async function uploadHandler(
             },
           })
           .then((re) => {
+            console.log(re.data);
             const transcriptWithTimeStamps =
               re.data.data;
             let wholeTranscript = [];

@@ -32,7 +32,12 @@ export default async function uploadHandler(
         "https://audio-samples.github.io/samples/mp3/blizzard_unconditional/sample-0.mp3",
     },
     {
-      word: "fucker",
+      word: "bitch",
+      audio:
+        "https://audio-samples.github.io/samples/mp3/blizzard_unconditional/sample-0.mp3",
+    },
+    {
+      word: "ass",
       audio:
         "https://audio-samples.github.io/samples/mp3/blizzard_unconditional/sample-0.mp3",
     },
@@ -42,7 +47,12 @@ export default async function uploadHandler(
         "https://audio-samples.github.io/samples/mp3/blizzard_unconditional/sample-0.mp3",
     },
     {
-      word: "bitch",
+      word: "bars",
+      audio:
+        "https://audio-samples.github.io/samples/mp3/blizzard_unconditional/sample-0.mp3",
+    },
+    {
+      word: "retard",
       audio:
         "https://audio-samples.github.io/samples/mp3/blizzard_unconditional/sample-0.mp3",
     },
@@ -74,8 +84,12 @@ export default async function uploadHandler(
 
           console.log("API call completed");
           const { data: response } = resp;
-          const results = response.data;
+          const results = response?.data ?? [];
           allResults = allResults.concat(results);
+          // sleep for 2 seconds
+          await new Promise((resolve) =>
+            setTimeout(resolve, 2000)
+          );
           console.log(
             "got " +
               profanityItem.word +
@@ -101,7 +115,7 @@ export default async function uploadHandler(
           "original.wav"
         );
         let functionBuffer = readFileSync(
-          "/Users/shai/Projects/thirteenandup/pages/api/find-fucks/function.mp3"
+          "/Users/shai/Projects/thirteenandup/pages/api/find-fucks/beep.mp3"
         );
 
         console.log(
@@ -110,7 +124,7 @@ export default async function uploadHandler(
 
         await new Promise((resolve, reject) => {
           ffmpeg(
-            "/Users/shai/Projects/thirteenandup/pages/api/find-fucks/function.mp3"
+            "/Users/shai/Projects/thirteenandup/pages/api/find-fucks/beep.mp3"
           )
             .output("function.wav")
             .on("end", resolve)
