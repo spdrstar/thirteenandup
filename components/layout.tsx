@@ -14,12 +14,14 @@ interface LayoutProps {
   image?: string;
   children: React.ReactNode;
   loadTwitterWidget?: boolean;
+  showTitle?: boolean;
 }
 
 export default function Layout({
   title,
   description,
   metaTitle = "Thirteen and Up",
+  showTitle,
   metaDescription,
   image = "https://with-mux-video.vercel.app/mux-nextjs-og-image.png",
   children,
@@ -88,7 +90,7 @@ export default function Layout({
 
       <main>
         <Image src="/logo.svg" alt="Logo" width={400} height={400} style={{maxWidth: "80%", objectFit: "contain"}} />
-        <h1 className="title">{title}{titleSuffix}</h1>
+        {showTitle && <h1 className="title">{title}{titleSuffix}</h1>}
         <p className="description">{description}</p>
         <div className="grid">{children}</div>
       </main>

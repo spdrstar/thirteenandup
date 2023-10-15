@@ -62,6 +62,8 @@ const UploadForm = () => {
       return
     }
 
+    console.log(files[0])
+
     const upload = UpChunk.createUpload({
       endpoint: createUpload,
       file: files[0],

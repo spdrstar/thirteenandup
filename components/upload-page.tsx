@@ -12,6 +12,7 @@ export default function UploadPage({
     <Layout
       title="your content"
       description="video censorship with one click"
+      showTitle
     >
       <div className="wrapper">
         <div className="children">{children}</div>

@@ -12,7 +12,7 @@ export default function Button({ children, ...otherProps }: ButtonProps) {
           border-radius: 50px;
           width: 300px;
           font-size: 23px;
-          background: #E4C085;
+          background: #F8333C;
           color: #FBF4E4;
           line-height: 22px;
           border: none;
@@ -20,7 +20,7 @@ export default function Button({ children, ...otherProps }: ButtonProps) {
           font-family: departura;
         }
         button:hover {
-          background: #F8333C;
+          background: #E4C085;
         }
       `}</style>
     </>

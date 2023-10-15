@@ -87,7 +87,7 @@ export default function Playback({
             rel="noopener noreferrer"
             href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20video%20I%20uploaded%20with%20Next.js%2C%20%40Vercel%2C%20and%20%40muxhq%20`}
           >
-            Tweet this
+            Share on Twitter
           </a>
         </div>
       </div>
