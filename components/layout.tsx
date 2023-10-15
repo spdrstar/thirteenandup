@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image';
 import { MUX_HOME_PAGE_URL } from '../constants'
 
 interface LayoutProps {
@@ -14,16 +15,15 @@ interface LayoutProps {
 export default function Layout({
   title,
   description,
-  metaTitle = 'Mux + Next.js',
+  metaTitle = 'Thirteen and Up',
   metaDescription,
   image = 'https://with-mux-video.vercel.app/mux-nextjs-og-image.png',
   children,
-  loadTwitterWidget,
 }: LayoutProps) {
   return (
     <div className="container">
       <Head>
-        <title>Mux + Next.js</title>
+        <title>Thirteen and Up</title>
         <link rel="icon" href="/favicon.ico" />
         {metaTitle && <meta property="og:title" content={metaTitle} />}
         {metaTitle && <meta property="twitter:title" content={metaTitle} />}
@@ -34,40 +34,26 @@ export default function Layout({
           <meta property="twitter:description" content={description} />
         )}
         {image && <meta property="og:image" content={image} />}
-        {image && (
-          <meta property="twitter:card" content="summary_large_image" />
-        )}
-        {image && <meta property="twitter:image" content={image} />}
-        {loadTwitterWidget && (
-          <script
-            type="text/javascript"
-            async
-            src="https://platform.twitter.com/widgets.js"
-          ></script>
-        )}
       </Head>
 
       <main>
+        <Image src="/logo.png" alt="Logo" width={400} height={400} />
         <h1 className="title">{title}</h1>
         <p className="description">{description}</p>
         <div className="grid">{children}</div>
       </main>
 
-      <footer>
-        <a href={MUX_HOME_PAGE_URL} target="_blank" rel="noopener noreferrer">
-          Powered by <img src="/mux.svg" alt="Mux Logo" className="logo" />
-        </a>
-      </footer>
-
       <style jsx>{`
         .container {
           min-height: 100vh;
           min-height: -webkit-fill-available;
-          padding: 0 0.5rem;
+          padding: 0 0rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          background: #FBF4E4;
+          height: 100vh;
         }
 
         main {
@@ -75,26 +61,6 @@ export default function Layout({
           flex: 1;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-          width: 71px;
-        }
-
-        footer a {
-          display: flex;
           justify-content: center;
           align-items: center;
         }
