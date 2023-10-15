@@ -69,13 +69,14 @@ export default async function uploadHandler(
                 return self.indexOf(value) === index;
               });
               console.log(badWords);
+              return res.status(200).json(badWords);
             } catch (error: any) {
               res.status(error.response?.status || 500).json(error.response?.data || {});
             }
           });
 
         // console.log(JSON.stringify(resp));
-        return res.status(200).json(resp);
+        //return res.status(200).json(resp);
       } catch (e) {
         console.error("Request error", e);
         return res.status(500).json({
