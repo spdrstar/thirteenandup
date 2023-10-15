@@ -14,15 +14,11 @@ export default async function uploadHandler(
   switch (method) {
     case "POST":
       try {
-        const upload = await Video.Uploads.create(
-          {
-            new_asset_settings: {
-              playback_policy: "public",
-            },
-            cors_origin: "*",
-          }
-        );
-        console.log("upload::: ", upload.url);
+        const upload = await Video.Uploads.create({
+          new_asset_settings: { playback_policy: 'public', mp4_support: 'standard' },
+          cors_origin: '*',
+        })
+        console.log(upload)
         res.json({
           id: upload.id,
           url: upload.url,

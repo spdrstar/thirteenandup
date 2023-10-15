@@ -16,6 +16,7 @@ export default async function uploadHandler(
         const upload = await Video.Uploads.get(
           req.query.id as string
         );
+        console.log(upload)
         res.json({
           upload: {
             status: upload.status,

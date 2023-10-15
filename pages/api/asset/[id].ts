@@ -12,6 +12,7 @@ export default async function assetHandler(
     case 'GET':
       try {
         const asset = await Video.Assets.get(req.query.id as string)
+        console.log(asset)
         res.json({
           asset: {
             id: asset.id,
