@@ -97,7 +97,7 @@ const UploadForm = () => {
         ) : (
           <label>
             <Button type="button" onClick={() => inputRef.current?.click()}>
-              Select a video file
+              Select a video
             </Button>
             <input type="file" onChange={startUpload} ref={inputRef} />
           </label>
@@ -106,6 +106,18 @@ const UploadForm = () => {
       <style jsx>{`
         input {
           display: none;
+        }
+        .container {
+          display: flex;
+          justify-content: center;
+        }
+        label {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          height: 100%; // This will make it full screen, adjust as needed
+          position: absolute;
+          bottom: 40px;
         }
       `}</style>
     </>
