@@ -11,7 +11,7 @@ export default function Button({ children, ...otherProps }: ButtonProps) {
           padding: 20px 20px;
           border-radius: 50px;
           width: 300px;
-          font-size: 22px;
+          font-size: 23px;
           background: #E4C085;
           color: #FBF4E4;
           line-height: 22px;
