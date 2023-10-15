@@ -11,19 +11,16 @@ export default function Button({ children, ...otherProps }: ButtonProps) {
           padding: 20px 20px;
           border-radius: 50px;
           width: 300px;
-          font-size: 22px;
+          font-size: 23px;
           background: #E4C085;
-          color: white;
+          color: #FBF4E4;
           line-height: 22px;
           border: none;
           cursor: pointer;
+          font-family: departura;
         }
         button:hover {
-          background-image: linear-gradient(
-            to left,
-            rgb(253, 95, 85),
-            rgb(255, 85, 128)
-          );
+          background: #F8333C;
         }
       `}</style>
     </>

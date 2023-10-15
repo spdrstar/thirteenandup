@@ -115,7 +115,6 @@ const UploadForm = () => {
           display: flex;
           justify-content: center;
           align-items: flex-end;
-          height: 100%; // This will make it full screen, adjust as needed
           position: absolute;
           bottom: 40px;
         }
