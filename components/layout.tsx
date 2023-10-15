@@ -21,7 +21,7 @@ export default function Layout({
   image = 'https://with-mux-video.vercel.app/mux-nextjs-og-image.png',
   children,
 }: LayoutProps) {
-  const [titleSuffix, setTitleSuffix] = useState('');
+  const [titleSuffix, setTitleSuffix] = useState(' with no f*cks');
 
   useEffect(() => {
     const suffixes = [
@@ -59,7 +59,7 @@ export default function Layout({
       </Head>
 
       <main>
-        <Image src="/logo.png" alt="Logo" width={400} height={400} style={{maxWidth: "80%", objectFit: "contain"}} />
+        <Image src="/logo.svg" alt="Logo" width={400} height={400} style={{maxWidth: "80%", objectFit: "contain"}} />
         <h1 className="title">{title}{titleSuffix}</h1>
         <p className="description">{description}</p>
         <div className="grid">{children}</div>
@@ -108,6 +108,7 @@ export default function Layout({
           margin: 0;
           line-height: 1.15;
           font-size: 4rem;
+          font-family: departura;
         }
 
         .title,
@@ -118,6 +119,7 @@ export default function Layout({
         .description {
           line-height: 1.5;
           font-size: 1.5rem;
+          font-family: departura;
         }
 
         code {
